@@ -1,6 +1,6 @@
-## Telegraf setup
+# Telegraf setup
 
-# install deb package
+### install deb package
 ```
 wget https://dl.influxdata.com/telegraf/releases/telegraf_1.20.4-1_amd64.deb
 ```
@@ -8,7 +8,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.20.4-1_amd64.deb
 sudo dpkg -i telegraf_1.20.4-1_amd64.deb
 ```
 
-# install influx
+### install influx
 
 ```
 wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor | sudo tee /etc/apt/trusted.
