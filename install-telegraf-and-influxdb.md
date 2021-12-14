@@ -119,3 +119,17 @@ sudo apt-get update && sudo apt-get install influxdb2
   ## Max duration (TTL) for each metric to stay cached/reported without being updated.
   # max_ttl = "10h"
 ```
+
+### install Chronograf
+```
+wget https://dl.influxdata.com/chronograf/releases/chronograf_1.9.1_amd64.deb
+```
+```
+sudo dpkg -i chronograf_1.9.1_amd64.deb
+```
+```
+sudo service chronograf start
+```
+check port 8888
+
+Dont forget to create an admin token on the influx DB using which you can authenticate
