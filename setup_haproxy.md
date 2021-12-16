@@ -181,11 +181,11 @@ To add more domains, run the certbot command again with additional domains and r
 ## Certificate Renewal
 
 Create a script
-(Replace the domain folder with what you have in the system)
 ```
 sudo vi /opt/update-certs.sh
 ```
 Insert the following contents into the script
+(Replace the domain folder with what you have in the system)
 ```
 #!/usr/bin/bash
 
