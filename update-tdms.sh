@@ -10,7 +10,7 @@ git pull
 
 
 echo "Updating code files..."
-sudo find /opt/cloudtdms/dags/ ! \( -name "bundle_dags" -o -name "app_dags" -o -name "dags" \) -exec rm -rf {} 2> /dev/null \;
+sudo find /opt/cloudtdms/dags/ -maxdepth 1  ! \( -name "bundle_dags" -o -name "app_dags" -o -name "dags" \) -exec rm -rf {} 2> /dev/null \;
 
 sudo cp /home/sammanan4/office/tdms/CloudTDMS_V2/CloudTDMS/dags/* -r /opt/cloudtdms/dags/
 
