@@ -11,8 +11,7 @@ sudo dpkg -i telegraf_1.20.4-1_amd64.deb
 ### install influx
 
 ```
-wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor | sudo tee /etc/apt/trusted.
-gpg.d/influxdb.gpg > /dev/null
+wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdb.gpg > /dev/null
 ```
 ```
 export DISTRIB_ID=$(lsb_release -si); export DISTRIB_CODENAME=$(lsb_release -sc)
