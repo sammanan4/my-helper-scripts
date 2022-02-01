@@ -28,6 +28,7 @@ sudo apt-get update && sudo apt-get install influxdb2
 * copy the provided config
 * save the config at telegraf machine /etc/telegraf/telegraf.conf
 * set the token env var provided in /etc/default/telegraf (without export like => INFLUX_TOKEN=...)
+* Make sure you update the IP address of influx db server in telegraf conf
 
 
 
