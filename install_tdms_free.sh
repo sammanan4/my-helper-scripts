@@ -43,12 +43,12 @@ sudo mv /home/${USER}/.symfony/bin/symfony /usr/local/bin/symfony
 
 symfony # To check if symfony is installed
 
-#git clone https://github.com/Cloud-Innovation-Partners/CloudTDMS_SaaS_Free.git
-#cd CloudTDMS_SaaS_Free/
+git clone https://github.com/Cloud-Innovation-Partners/CloudTDMS_SaaS_Free.git
+cd CloudTDMS_SaaS_Free/
 
-#vi .env.local # THEN Setup the database url
+echo "DATABASE_URL=\"mysql://root:password@127.0.0.1:3306/CloudTDMS?serverVersion=mariadb-10.4.21\"" >> .env.local
 
-#composer install
-#symfony console app:setup-database
+composer install
+symfony console app:setup-database
 
-#symfony serve -d
+symfony serve -d
