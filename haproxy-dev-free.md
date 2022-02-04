@@ -173,7 +173,7 @@ frontend Local_Server
 backend dev_free_server
     mode http
     option forwardfor
-    server dev-free.cloudtdms.com  localhost:80
+    server dev-free.cloudtdms.com  localhost:8000
     # add the same line again for more servers with different addresses
 
 
