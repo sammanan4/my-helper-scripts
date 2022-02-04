@@ -76,6 +76,18 @@ frontend Local_Server
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:8888
 ```
+Install certbot
+```
+sudo snap install core; sudo snap refresh core
+```
+```
+sudo snap install --classic certbot
+```
+```
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+
 Run the following command to get the certificate
 ```
 sudo certbot certonly --standalone -d dev-free.cloudtdms.com --agree-tos --email <email> --http-01-port=8888
