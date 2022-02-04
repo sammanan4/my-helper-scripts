@@ -87,6 +87,15 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
+Enable the haproxy service
+```
+sudo systemctl enable haproxy
+```
+Start the haproxy server
+```
+sudo service haproxy start
+```
+
 
 Run the following command to get the certificate
 ```
