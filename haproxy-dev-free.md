@@ -105,7 +105,7 @@ sudo certbot certonly --standalone -d dev-free.cloudtdms.com --agree-tos --email
 HAProxy requires the certificate and the private key in a single file.  
 Create the same using the command below  
 ```
-sudo cat /etc/letsencrypt/live/dev-free.cloudtdms.com/fullchain.pem /etc/letsencrypt/live/dev-free.cloudtdms.com/privkey.pem > /etc/haproxy/haproxy.pem
+sudo cat /etc/letsencrypt/live/dev-free.cloudtdms.com/fullchain.pem /etc/letsencrypt/live/dev-free.cloudtdms.com/privkey.pem | sudo tee /etc/haproxy/haproxy.pem > /dev/null
 ```
 
 Now that we have HTTPS set up.
