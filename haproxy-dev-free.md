@@ -93,7 +93,7 @@ sudo systemctl enable haproxy
 ```
 Start the haproxy server
 ```
-sudo service haproxy start
+sudo service haproxy restart
 ```
 
 
