@@ -110,9 +110,10 @@ sudo cat /etc/letsencrypt/live/dev-free.cloudtdms.com/fullchain.pem /etc/letsenc
 
 Now that we have HTTPS set up.
 Let's update the haproxy.cfg with our domain.
+```
+sudo vi /etc/haproxy/haproxy.cfg
+```
 Update your cfg with the following content
-
-
 ```
 global
 	log /dev/log	local0
@@ -184,6 +185,25 @@ backend letsencrypt-backend
 ```
 
 To add more domains, run the certbot command again with additional domains and repeat the same steps as defined above.
+
+
+## Apache VHost
+```
+<VirtualHost *:8000>
+    ServerName dev-free.cloudtdms.com
+    ServerAlias www.dev-free.cloudtdms.com.com
+    ServerAdmin webmaster@dev-free.cloudtdms.com
+    DocumentRoot /var/www/dev/public
+    <Directory /var/www/dev/public>
+        FallbackResource /index.php
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/dev_error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+
+
 
 ## Certificate Renewal
 
