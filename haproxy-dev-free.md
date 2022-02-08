@@ -183,7 +183,7 @@ frontend Local_Server
     # decide which backend to server depending on the domain accessed
     use_backend dev_free_server if devfree
     
-    default_backend dummy_backend
+    default_backend dummy_server
 
 
 
@@ -193,7 +193,10 @@ backend dev_free_server
     server dev-free.cloudtdms.com  localhost:8000
     # add the same line again for more servers with different addresses
 
-
+backend dummy_server
+    mode http
+    option forwardfor
+    server dummy  localhost:8000
 
 # LetsEncrypt Backend
 backend letsencrypt-backend
