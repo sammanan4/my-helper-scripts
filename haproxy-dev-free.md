@@ -161,6 +161,11 @@ defaults
 
 frontend Local_Server
     bind *:80
+    
+    # check if ip address is accessed
+    acl ACL_IS_IP hdr(host) -i -m reg (\d+)\.(\d+)\.(\d+)\.(\d+)
+    http-request redirect code 301 location https://dev-free.cloudtdms.com if ACL_IS_IP
+    
     bind *:443 ssl crt /etc/haproxy/haproxy.pem # crt /etc/haproxy/haproxy2.pem
     # to add multiple certs keep appending "crt <path>" to above lines
     mode http
@@ -177,6 +182,8 @@ frontend Local_Server
     
     # decide which backend to server depending on the domain accessed
     use_backend dev_free_server if devfree
+    
+    default_backend dummy_backend
 
 
 
