@@ -107,12 +107,14 @@ Run the following command to get the certificate
 ```
 sudo certbot certonly --standalone -d dev-free.cloudtdms.com --agree-tos --email <email> --http-01-port=8888
 ```  
+To add certificates for multiple sub domains, run the same command with different domains
 
 HAProxy requires the certificate and the private key in a single file.  
 Create the same using the command below  
 ```
 sudo cat /etc/letsencrypt/live/dev-free.cloudtdms.com/fullchain.pem /etc/letsencrypt/live/dev-free.cloudtdms.com/privkey.pem | sudo tee /etc/haproxy/haproxy.pem > /dev/null
 ```
+If you have different certs for multiple sub domains, then create multiple pem files like /etc/haproxy/haproxy1.pem /etc/haproxy/haproxy2.pem etc..
 
 Now that we have HTTPS set up.
 Let's update the haproxy.cfg with our domain.
@@ -159,7 +161,8 @@ defaults
 
 frontend Local_Server
     bind *:80
-    bind *:443 ssl crt /etc/haproxy/haproxy.pem
+    bind *:443 ssl crt /etc/haproxy/haproxy.pem # crt /etc/haproxy/haproxy2.pem
+    # to add multiple certs keep appending "crt <path>" to above lines
     mode http
     
     # Redirect if HTTPS is *not* used
