@@ -19,9 +19,15 @@ haproxy -v
 ```
 
 ## Setup HTTPS
+
+Backup the original config file
+```
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+```
+
 Open haproxy configuration file
 ```
-sudo vi /etc/haproxy/haproxy.cfg 
+sudo vi /etc/haproxy/haproxy.cfg
 ```
 
 Paste the following contents into the cfg
@@ -202,8 +208,10 @@ To add more domains, run the certbot command again with additional domains and r
 </VirtualHost>
 ```
 
-
-
+## Update the ports.conf file
+```
+sudo vi /etc/apache2/ports.conf
+```
 
 ## Certificate Renewal
 
