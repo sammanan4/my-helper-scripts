@@ -100,7 +100,7 @@ sudo metricbeat modules enable system
 ```
 * Setup initial environment
 ```
-sudo metricbeat modules enable system
+sudo metricbeat setup -e
 ```
 * Allow remote connections to kibana
 ```
