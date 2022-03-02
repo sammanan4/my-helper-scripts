@@ -237,11 +237,13 @@ Insert the following contents into the script
 ```
 #!/usr/bin/bash
 
-# Renew the certificate
 certbot renew --force-renewal --http-01-port=8888
 
 # Concatenate new cert files, with less output (avoiding the use tee and its output to stdout)
-bash -c "cat /etc/letsencrypt/live/dev-free.cloudtdms.com/fullchain.pem /etc/letsencrypt/live/dev-free.cloudtdms.com/privkey.pem > /etc/haproxy/haproxy.pem"
+
+bash -c "cat /etc/letsencrypt/live/cloudtdms.com/fullchain.pem /etc/letsencrypt/live/cloudtdms.com/privkey.pem > /etc/haproxy/haproxy-tdms.pem"
+
+bash -c "cat /etc/letsencrypt/live/cloudinp.com/fullchain.pem /etc/letsencrypt/live/cloudinp.com/privkey.pem > /etc/haproxy/haproxy-cip.pem"
 
 # Reload  HAProxy
 service haproxy reload
