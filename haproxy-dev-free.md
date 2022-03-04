@@ -35,7 +35,7 @@ Paste the following contents into the cfg
 ```
 global
         log 127.0.0.1:514 local0
-        log 127.0.0.1:514 local1 notice
+        log 127.0.0.1:514 local0 notice
         #log /dev/log   local0
         #log /dev/log   local1 notice
 	chroot /var/lib/haproxy
