@@ -18,6 +18,7 @@ sudo apt install haproxy=2.4.\*
 haproxy -v
 ```
 
+
 ## Setup HTTPS
 
 Backup the original config file
@@ -33,8 +34,10 @@ sudo vi /etc/haproxy/haproxy.cfg
 Paste the following contents into the cfg
 ```
 global
-	log /dev/log	local0
-	log /dev/log	local1 notice
+        log 127.0.0.1:514 local0
+        log 127.0.0.1:514 local1 notice
+        #log /dev/log   local0
+        #log /dev/log   local1 notice
 	chroot /var/lib/haproxy
 	stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
 	stats timeout 30s
@@ -124,8 +127,10 @@ sudo vi /etc/haproxy/haproxy.cfg
 Update your cfg with the following content
 ```
 global
-	log /dev/log	local0
-	log /dev/log	local1 notice
+        log 127.0.0.1:514 local0
+        log 127.0.0.1:514 local1 notice
+        #log /dev/log   local0
+        #log /dev/log   local1 notice
 	chroot /var/lib/haproxy
 	stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
 	stats timeout 30s
@@ -264,3 +269,36 @@ Insert the following line, and comment the default one
 ```
 0 0 1 * * root bash /opt/update-certs.sh
 ```
+
+
+# Configure logging
+Allow rsyslog to listen on udp port 514
+```
+sudo vi /etc/rsyslog.conf
+```
+Uncomment the following lines
+```
+module(load="imudp")
+input(type="imudp" port="514")
+```
+Find the config for haproxy inside `/etc/rsyslog.d/`, open the same file and replace with the following contents
+```
+# Collect log with UDP
+$ModLoad imudp
+$UDPServerAddress 127.0.0.1
+$UDPServerRun 514
+
+# Creating separate log files based on the severity
+local0.* /var/log/haproxy-traffic.log
+local0.notice /var/log/haproxy-admin.log
+```
+Restart haproxy and rsyslog
+```
+sudo service haproxy restart
+```
+
+```
+sudo service rsyslog restart
+```
+
+
