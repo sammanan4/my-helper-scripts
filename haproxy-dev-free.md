@@ -210,6 +210,11 @@ backend letsencrypt-backend
 
 To add more domains, run the certbot command again with additional domains and repeat the same steps as defined above.
 
+check your config
+```
+haproxy -c -V -f /etc/haproxy/haproxy.cfg
+```
+
 
 ## Apache VHost
 ```
@@ -291,6 +296,14 @@ $UDPServerRun 514
 # Creating separate log files based on the severity
 local0.* /var/log/haproxy-traffic.log
 local0.notice /var/log/haproxy-admin.log
+```
+Check your rsyslog configs
+```
+rsyslogd -N1
+```
+Assuming the rsyslog config for haproxy is haproxy.conf, check it like
+```
+rsyslogd -f /etc/rsyslog.d/haproxy.conf -N1
 ```
 Restart haproxy and rsyslog
 ```
