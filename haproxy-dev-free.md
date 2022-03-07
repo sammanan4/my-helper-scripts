@@ -178,6 +178,11 @@ frontend Local_Server
     # Redirect if HTTPS is *not* used
     redirect scheme https code 301 if !{ ssl_fc }
     
+    # max-age is mandatory 
+    # 16000000 seconds is a bit more than 6 months
+    http-response set-header Strict-Transport-Security "max-age=16000000; includeSubDomains; preload;"
+
+    
     # Test URI to see if its a letsencrypt request
     acl letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
