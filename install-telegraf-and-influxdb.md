@@ -8,6 +8,14 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.20.4-1_amd64.deb
 sudo dpkg -i telegraf_1.20.4-1_amd64.deb
 ```
 
+## Telegraf important links for configuration
+* https://github.com/influxdata/telegraf/blob/release-1.14/plugins/outputs/file/README.md
+* https://github.com/influxdata/telegraf/tree/master/plugins/serializers/json
+* https://github.com/influxdata/telegraf/blob/release-1.14/plugins/aggregators/basicstats/README.md
+* https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md
+* https://docs.influxdata.com/telegraf/v1.21/administration/configuration/
+
+
 ### install influx
 
 ```
