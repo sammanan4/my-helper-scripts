@@ -1,0 +1,17 @@
+# check number of lines by each person in repo
+git ls-files | while read f; do git blame -w -M -C -C --line-porcelain "$f" | grep -I '^author '; done | sort -f | uniq -ic | sort -n --reverse
+
+
+# command to get number of lines in all files found
+find . -name "*.dart" -exec bash -c 'wc -l {} | cut -d\  -f 1' \;|tr "\n" "+"|rev| cut -c2-|rev|bc
+
+
+# change secondary display gamma and brightness
+xrandr -q | grep "connected"
+xrandr --output DP-1 --brightness 0.3 --gamma 1.0:0.33:0.76
+
+
+# find size of all directories
+du -h --max-depth=1 <path>
+# or
+du -h -d1 <path>
